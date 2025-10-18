@@ -123,13 +123,13 @@ export class LuckyFile extends LuckyFileBase {
     getSheetsFull(isInitialCell:boolean=true){
         let sheets = this.readXml.getElementsByTagName("sheets/sheet", workBookFile);
         let sheetList:IattributeList = {};
-        for(let key in sheets){
+        for (let key = 0; key < sheets.length; key++) {
             let sheet = sheets[key];
             sheetList[sheet.attributeList.name] = sheet.attributeList["sheetId"];
         }
         this.sheets = [];
         let order = 0;
-        for(let key in sheets){
+        for (let key = 0; key < sheets.length; key++) {
             let sheet = sheets[key];
             let sheetName = sheet.attributeList.name;
             let sheetId = sheet.attributeList["sheetId"];
