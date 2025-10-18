@@ -50,7 +50,7 @@ export class ReadXml extends xmloperation{
         
         let file = this.getFileByName(fileName);
         let pathArr = path.split("/"), ret:string[] | string;
-        for(let key in pathArr){
+        for(let key=0; key< pathArr.length;key++){
             let path = pathArr[key];
             if(ret==undefined){
                 ret = this.getElementsByOneTag(path,file);
@@ -58,8 +58,8 @@ export class ReadXml extends xmloperation{
             else{
                 if(ret instanceof Array){
                     let items:string[]=[];
-                    for(let key in ret){
-                        let item = ret[key];
+                    for(let i=0; i< ret.length;i++){
+                        let item = ret[i];
                         items = items.concat(this.getElementsByOneTag(path,item));
                     }
                     ret = items;
@@ -109,7 +109,7 @@ export class Element extends xmloperation {
         let attrList = this.container.match(readAttrReg);
         this.attributeList = {};
         if(attrList!=null){
-            for(let key in attrList){
+            for(let key=0; key< attrList.length;key++){
                 let attrFull = attrList[key];
                 // let al= attrFull.split("=");
                 if(attrFull.length==0){
